@@ -1,0 +1,176 @@
+@startuml
+package "AbstractClasses" {
+    abstract Character {
+      - name: String
+      + getName(): String
+      + setName(name: String): void
+      + equals(o: Object): boolean
+      + hashCode(): int
+      + toString(): String
+  }
+}
+package "Classes" {
+    class Bushes extends Character implements Viewable {
+      - characteristic: String
+      + viewable(): String
+      - setCharacteristic(Planet: PlanetsAndSatellites): void
+  }
+    class Clothes {
+      - name: String
+      - color: Color
+      - isStriped: boolean
+      + material: String
+      + description(): String
+  }
+    class Flower extends Character implements Viewable {
+      - characteristic: String
+      - length: Size
+      + viewable(): String
+      + getLength(): Size
+      - setCharacteristic(Planet: PlanetsAndSatellites): void
+  }
+    class Hill implements Viewable {
+      - name: String
+      - point: Point
+      - getName(): String
+      + getPoint(): Point
+      + viewable(): String
+  }
+    class Person extends Character implements Viewable {
+      - heigth: int
+      - status: Status
+      - point: Point
+      - MainState: EnergyState
+      - clothes: Clothes
+      - personFeatures: PersonFeatures
+      + getMainState(): EnergyState
+      - setMainState(main: EnergyState): void
+      - setStatus(status: Status): void
+      - setPoint(point: Point): void
+      + setClothes(clothes: Clothes): void
+      + getPersonFeatures(): PersonFeatures
+      - getHeigth(): int
+      + getPoint(): Point
+      + printClothes(): String
+      + viewable(): String
+      + convertView(): void
+      + convertMove(): void
+      + convertPoke(): void
+      + convertThink(): void
+      + convertViewFeatures(): void
+      + view(stage: Stage): void
+      + uphill(stage: Stage): void
+      + poke(b: Person, c: Item): void
+      + think(stage: Stage, flowers: Flower): void
+      + viewFeatures(p: Person): void
+      + relax(): void
+      + equals(o: Object): boolean
+      + hashCode(): int
+      + toString(): String
+  }
+    class Stage {
+      - MainCharacter: Person
+      - persons: Person
+      - flowers: Flower
+      - bushes: Bushes
+      - hill: Hill
+      - Planet: PlanetsAndSatellites
+      + getPlanet(): PlanetsAndSatellites
+      + getHillPoint(): Point
+      + getMainCharacter(): Person
+      + setFlowers(flowers: Flower): void
+      + setBushes(bushes: Bushes): void
+      + getStageContain(): String
+  }
+}
+package "Enums" {
+    enum Color {
+      RED
+      BLUE
+      GREEN
+      PINK
+      BROWN
+      NOTHING
+      - description: String
+      + Type(): String
+  }
+    enum EnergyState {
+      SAVING
+      MIDDLE
+      READY
+      - energy: int
+      + getEnergy(): int
+  }
+    enum PersonFeatures {
+      PINKBALDSPOT
+      REDCHEEKS
+      NARROWEYES
+      FUNNYFACE
+      NOTHING
+      - description: String
+      + getDescription(): String
+  }
+    enum PlanetsAndSatellites {
+      Earth
+      Moon
+      - title: String
+      - gravity: double
+      + getGravity(): double
+      + getTitle(): String
+  }
+    enum Size {
+      SMALL
+      MEDIUM
+      LARGE
+      - sizeInSm: int
+      + getSizeInSm(): int
+  }
+    enum Status {
+      THINKING
+      SEEING
+      WALKING
+      SITING
+      POKING
+      NOTHING
+      MOVING
+      WORKING
+      VIEWFEATURES
+      - description: String
+      + getDescription(): String
+  }
+}
+package "Exceptions" {
+    class HeightException extends RuntimeException {
+      + getMessage(): String
+  }
+    class NameException extends RuntimeException {
+      + getMessage(): String
+  }
+    class PointException extends Exception {
+      + getMessage(): String
+  }
+}
+package "Interfaces" {
+    interface Viewable {
+      + viewable(): String
+  }
+}
+package "Record" {
+    class Unknown {
+  }
+}
+class Main {
+    + main(args: String): void
+}
+  Clothes o-- Color: contains
+  Flower o-- Size: contains
+  Person o-- Status: contains
+  Person o-- EnergyState: contains
+  Person o-- Clothes: contains
+  Person o-- PersonFeatures: contains
+  Stage "1" o-- "many" Person: contains
+  Stage o-- Flower: contains
+  Stage o-- Bushes: contains
+  Stage o-- Hill: contains
+  Stage o-- PlanetsAndSatellites: contains
+@enduml

@@ -1,0 +1,9 @@
+{
+    "java.project.sourcePaths": ["src"],
+    "java.project.outputPath": "bin",
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar"
+    ],
+    "javauml.settings.sourceFolder": "/Users/nemchinovartem/programming/LAB3 — копия/src",
+    "javauml.settings.outputLocation": "/Users/nemchinovartem/programming/LAB3 — копия"
+}
