@@ -10,8 +10,22 @@ package "AbstractClasses" {
   }
 }
 package "Classes" {
+    class Action {
+      + p: Person
+      + view(stage: Stage): void
+      + uphill(stage: Stage): void
+      + poke(b: Person, c: Item): void
+      + thinkFlowers(stage: Stage, flowers: Flower): void
+      + viewFeatures(p: Person): void
+      + cut(bushes: Bushes): void
+      + influenceEmotion(p: Person): void
+      + relax(): void
+  }
     class Bushes extends Character implements Viewable {
       - characteristic: String
+      - numberOfLeaves: int
+      + cutLeaves(p: Person): void
+      + getNumberOfLeaves(): int
       + viewable(): String
       - setCharacteristic(Planet: PlanetsAndSatellites): void
   }
@@ -37,32 +51,29 @@ package "Classes" {
       + viewable(): String
   }
     class Person extends Character implements Viewable {
-      - heigth: int
+      - height: int
       - status: Status
       - point: Point
       - MainState: EnergyState
       - clothes: Clothes
       - personFeatures: PersonFeatures
       + getMainState(): EnergyState
-      - setMainState(main: EnergyState): void
-      - setStatus(status: Status): void
-      - setPoint(point: Point): void
+      + setMainState(main: EnergyState): void
+      + setStatus(status: Status): void
+      + setPoint(point: Point): void
       + setClothes(clothes: Clothes): void
       + getPersonFeatures(): PersonFeatures
-      - getHeigth(): int
+      + getHeight(): String
       + getPoint(): Point
+      + getStatus(): Status
       + printClothes(): String
       + viewable(): String
       + convertView(): void
       + convertMove(): void
       + convertPoke(): void
       + convertThink(): void
+      + convertCut(): void
       + convertViewFeatures(): void
-      + view(stage: Stage): void
-      + uphill(stage: Stage): void
-      + poke(b: Person, c: Item): void
-      + think(stage: Stage, flowers: Flower): void
-      + viewFeatures(p: Person): void
       + relax(): void
       + equals(o: Object): boolean
       + hashCode(): int
@@ -94,12 +105,22 @@ package "Enums" {
       - description: String
       + Type(): String
   }
+    enum DopAction {
+      COMPARESIZEFLOWERS
+      UNDERSTANDSPLACE
+      UPHILL
+      HABITUATION
+      - description: String
+      + getDescription(): String
+  }
     enum EnergyState {
       SAVING
       MIDDLE
       READY
       - energy: int
+      - stat: String
       + getEnergy(): int
+      + printDescription(): String
   }
     enum PersonFeatures {
       PINKBALDSPOT
@@ -134,6 +155,12 @@ package "Enums" {
       NOTHING
       MOVING
       WORKING
+      RELAX
+      CUT
+      FEELGOOD
+      FEELSAD
+      FEELPITY
+      FEELJEALOUS
       VIEWFEATURES
       - description: String
       + getDescription(): String
@@ -143,11 +170,16 @@ package "Exceptions" {
     class HeightException extends RuntimeException {
       + getMessage(): String
   }
+    class HillException extends RuntimeException {
+      + getMessage(): String
+  }
     class NameException extends RuntimeException {
       + getMessage(): String
   }
     class PointException extends Exception {
       + getMessage(): String
+  }
+    class PokeException extends RuntimeException {
   }
 }
 package "Interfaces" {
@@ -159,9 +191,22 @@ package "Record" {
     class Unknown {
   }
 }
+interface Impact {
+    + aply(pers1: Person, pers2: Person): void
+}
+class GoodImpact implements Impact {
+    + aply(pers1: Person, pers2: Person): void
+}
+class BadImpact implements Impact {
+    + aply(pers1: Person, pers2: Person): void
+}
 class Main {
     + main(args: String): void
+    + choice(): PlanetsAndSatellites
+    + choiceImpact(): Impact
+    + choiceState(): EnergyState
 }
+  Action o-- Person: contains
   Clothes o-- Color: contains
   Flower o-- Size: contains
   Person o-- Status: contains

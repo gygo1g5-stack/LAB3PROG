@@ -5,14 +5,26 @@ import Interfaces.Viewable;
 
 public class Bushes extends Character implements Viewable{
     
-    public Bushes(String name,Stage stage){
+    public Bushes(String name,Stage stage,int numberOfLeaves){
         super(name);
         setCharacteristic(stage.getPlanet());
-        System.out.println();
+        this.numberOfLeaves=numberOfLeaves;
     }
     private String characteristic;
 
-
+    private int numberOfLeaves;
+    public void cutLeaves(Person p){
+    
+        switch (p.getMainState()){
+        case SAVING -> {numberOfLeaves=numberOfLeaves-5;}
+        case MIDDLE -> {numberOfLeaves=numberOfLeaves-10;}
+        default -> {numberOfLeaves=numberOfLeaves-20;}
+            }
+        } 
+    public int getNumberOfLeaves(){
+        return this.numberOfLeaves;
+    }
+    
     @Override 
     public String viewable(){
         return  this.characteristic + " " + this.getName() ;

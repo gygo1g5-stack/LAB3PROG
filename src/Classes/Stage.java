@@ -1,5 +1,7 @@
 package Classes;
 import Enums.PlanetsAndSatellites;
+import Exceptions.HillException;
+
 import java.awt.Point;
 public class Stage  {
     public Stage(Person[] persons, Person MainCharacter , Hill hill,PlanetsAndSatellites Planet){
@@ -56,6 +58,7 @@ public class Stage  {
             contain.append(hill.viewable()+" ");
         }
         return contain.toString();
+        
     }
     
 }
