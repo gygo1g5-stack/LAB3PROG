@@ -203,16 +203,18 @@ public class Person extends Character implements Viewable {
         MainState = EnergyState.READY;
     }
 
+    
     @Override
     public boolean equals(Object o) {
-        if (!super.equals(o))
-            return false;
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
         Person person = (Person) o;
-        return (Objects.equals(height, person.height) && Objects.equals(MainState, person.MainState)
-                && Objects.equals(status, person.status) && Objects.equals(clothes, person.clothes)
-                && Objects.equals(point, person.point));
+        return Objects.equals(height, person.height) &&
+            Objects.equals(MainState, person.MainState) &&
+            Objects.equals(status, person.status) &&
+            Objects.equals(clothes, person.clothes) &&
+            Objects.equals(point, person.point);
     }
-
     @Override
     public int hashCode() {
         return Objects.hash(height * 123 + getPoint().x * 897 + getPoint().y * 763);
