@@ -29,7 +29,6 @@ public class Main {
         OneStage.setFlowers(flowers);
         Item broom=new Item("метла",50);
         System.out.println();
-        System.out.println(persons[0].equals(klops));
 
         persons[2].convertCut();
         new Action(persons[2]).cut(bushes); 

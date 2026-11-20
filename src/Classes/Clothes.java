@@ -1,4 +1,6 @@
 package Classes;
+import java.util.Objects;
+
 import Enums.*;
 import Exceptions.NameException;
 public class Clothes {
@@ -31,5 +33,17 @@ public class Clothes {
         }
 
     }
-    
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Clothes a = (Clothes) o;
+        return this.name == a.name && this.color == a.color && this.material==a.material;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, color, material, isStriped);
+    }
 }
+    

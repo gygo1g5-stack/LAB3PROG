@@ -1,6 +1,8 @@
 package Classes;
 
 import java.awt.Point;
+import java.lang.reflect.Array;
+import java.util.Arrays;
 import java.util.Objects;
 import AbstractClasses.Character;
 import Enums.*;
@@ -206,14 +208,14 @@ public class Person extends Character implements Viewable {
     
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Person person = (Person) o;
-        return Objects.equals(height, person.height) &&
-            Objects.equals(MainState, person.MainState) &&
-            Objects.equals(status, person.status) &&
-            Objects.equals(clothes, person.clothes) &&
-            Objects.equals(point, person.point);
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Person person = (Person) o;
+    return Objects.equals(height, person.height) &&
+           Objects.equals(MainState, person.MainState) &&
+           Objects.equals(status, person.status) &&
+           Arrays.equals(clothes, person.clothes) &&
+           Objects.equals(point, person.point);
     }
     @Override
     public int hashCode() {

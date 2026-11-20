@@ -115,12 +115,12 @@ public class Action {
         }
 
     }
-    public void influenceEmotion(Person p){
+    public void influenceEmotion(Person p2){
         if (p.getStatus()==Status.FEELGOOD){
-            System.out.println(p.getName()+" хочет познакомиться с " + p.getName());
+            System.out.println(p.getName()+" хочет познакомиться с " + p2.getName());
             p.setStatus(Status.NOTHING);
         }else if(p.getStatus()==Status.FEELPITY){
-            System.out.println(p.getName()+" хочет помочь " + p.getName());
+            System.out.println(p.getName()+" хочет помочь " + p2.getName());
             p.setStatus(Status.NOTHING);
         }else if (p.getStatus()==Status.FEELJEALOUS){
             System.out.println(p.getName()+" хочет уйти ");
