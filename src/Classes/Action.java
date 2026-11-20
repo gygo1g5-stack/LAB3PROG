@@ -130,13 +130,5 @@ public class Action {
             System.out.println(p.getName()+ " " + Status.NOTHING.getDescription());
         }
     }
-    public void relax() {
-        int t = p.getMainState().getEnergy();
-        while (t != 100) {
-            t += 35;
-            System.out.println(p.getName() + Status.RELAX.getDescription() + "у него " + p + " энергии");
-
-        }
-        p.setMainState(EnergyState.READY);
-    }
+    
 }
