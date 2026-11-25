@@ -4,7 +4,7 @@ import java.awt.Point;
 
 import Exceptions.PointException;
 public class Hill implements Viewable{
-    public Hill( Point point)throws PointException{
+    public Hill( Point point){
         if  (point==null || point.x<0 || point.y<0){
             throw new PointException();
         }

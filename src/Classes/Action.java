@@ -44,7 +44,7 @@ public class Action {
         }
     }
 
-    public void poke(Person b, Item c) {
+    public void poke(Person b, Item c) throws PokeException{
         if (p.getStatus() == Status.POKING && new Random().nextBoolean()) {
             System.out.println(p.getName() + Status.POKING.getDescription() + b.getName() + " в спину предметом "
                     + c.name() + " длины " + c.lengthInCm()+"cm ,"+ b.getName() + EnergyState.READY.printDescription());
@@ -57,7 +57,7 @@ public class Action {
         }
     }
 
-    public void thinkFlowers(Stage stage, Flower[] flowers, DopAction... dopActions) {
+    public void thinkFlowers(Stage stage, Flower[] flowers, DopAction... dopActions) throws HillException{
         if (p.getStatus() == Status.THINKING && stage.getMainCharacter().getPoint().x >= stage.getHillPoint().x
                 && stage.getMainCharacter().getPoint().y >= stage.getHillPoint().y) {
             StringBuilder s =new StringBuilder();

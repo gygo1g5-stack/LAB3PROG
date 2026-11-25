@@ -12,7 +12,7 @@ import Interfaces.*;
 
 
 public class Person extends Character implements Viewable {
-    public Person(String name, Point p, Status status, EnergyState state, Clothes... clothes) throws PointException {
+    public Person(String name, Point p, Status status, EnergyState state, Clothes... clothes)  {
         super(name);
         this.status = status;
         this.MainState = state;
